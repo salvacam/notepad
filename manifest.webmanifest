@@ -25,7 +25,7 @@
       }],
   "start_url": "/notepad/index.html",
   "display": "standalone",
-  "orientation": "natural",
+  "orientation": "portrait",
   "theme_color": "#CCC",
   "background_color": "#DEDEDE"
 }
