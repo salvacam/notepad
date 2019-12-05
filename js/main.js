@@ -41,9 +41,7 @@ var app = {
       }
     },
   
-  	init: function() {  	
-
-      app.doOnOrientationChange();
+  	init: function() {
       window.addEventListener('orientationchange', app.doOnOrientationChange);
 
   		app.note.addEventListener('keyup',
