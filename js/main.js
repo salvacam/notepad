@@ -53,10 +53,6 @@ var app = {
     		app.note.value = noteItem;
   		}
 
-      screen.addEventListener("orientationchange", function () {
-        alert("The orientation of the screen is: " + screen.orientation);
-      });
-
 	  	app.clearNotes.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
