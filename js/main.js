@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 var app = {  
-  	note: document.getElementById('note'),
+    note: document.getElementById('note'),
+  	noteSize: 18,
   	clearNotes: document.getElementById('clearNotes'),
     modalClear: document.getElementById('modalClear'),
     menosBtn: document.getElementById('menos'),
@@ -52,15 +53,20 @@ var app = {
     		app.note.value = noteItem;
   		}
 
+      if(localStorage.getItem("_noteSize") && localStorage.getItem("_noteSize")!=''){
+        var noteSizeItem = localStorage.getItem("_noteSize");
+        app.noteSize = noteSizeItem;
+        app.note.style.fontSize = app.noteSize + 'px';
+      }
+
       app.menosBtn.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation(); 
 
-        var style = window.getComputedStyle(app.note, null).getPropertyValue('font-size');
-        var fontSize = parseFloat(style); 
-
-        if (fontSize > 10) {
-          app.note.style.fontSize = (fontSize - 2) + 'px';
+        if (app.noteSize > 10) {
+          app.noteSize = parseFloat(app.noteSize) - 2
+          app.note.style.fontSize = app.noteSize + 'px';
+          localStorage.setItem("_noteSize", app.noteSize);
           app.masBtn.classList.remove('disabled');
         } else {
           app.menosBtn.classList.add('disabled');
@@ -70,12 +76,11 @@ var app = {
       app.masBtn.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation(); 
-        
-        var style = window.getComputedStyle(app.note, null).getPropertyValue('font-size');
-        var fontSize = parseFloat(style); 
 
-        if (fontSize < 30) {
-          app.note.style.fontSize = (fontSize + 2) + 'px';
+        if (app.noteSize < 50) {
+          app.noteSize = parseFloat(app.noteSize) + 2
+          app.note.style.fontSize = app.noteSize + 'px';
+          localStorage.setItem("_noteSize", app.noteSize);
           app.menosBtn.classList.remove('disabled');
         } else {
           app.masBtn.classList.add('disabled');
@@ -100,10 +105,7 @@ var app = {
 				  app.modalClear.classList.add('hide');
           app.note.focus();
 				  document.getElementById('closeClear').removeEventListener('click', ()=> {});
-  			});
-
-
-		    
+  			});		    
 		});
 
 		if ('serviceWorker' in navigator) {
@@ -113,5 +115,6 @@ var app = {
           		//console.log('Service Worker Registered');
         	});
 		}
+
   	}
 };
