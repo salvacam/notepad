@@ -1,4 +1,4 @@
-var cacheName = 'notepad-v0.1.03';
+var cacheName = 'notepad-v0.1.04';
 
 var filesToCache = [
   './',

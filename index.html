@@ -20,6 +20,7 @@ header h3{width:200px;margin:0;font-size:20px;font-weight:700;padding:0;padding-
 header h3 img{margin-right:15px}
 .container{margin:0 20px;margin-top:5px;width:auto;height:calc(100% - 65px);text-align:center}
 .btn{	border-radius:6px;border:0;background-color:#00F;color:#FFF;cursor:pointer;display:inline-block;margin:2px 0;text-decoration:none;outline:0;padding:10px;font-size:14px}
+.btn.disabled{	background-color:#777;}
 .modalClear{display:flex;flex-direction:column;justify-content:center;align-items:center;position:fixed;width:100%;height:100%;background:grey;color:#FFF;font-size:24px}
 .modalClear .closeClear,.modalClear .okClear{height:20px;margin-top:10px;font-size:20px;background-color:#00F;color:#FFF;padding:10px;border-radius:10px;opacity:1;text-align:center}
 .modalClear .clearText{color:#000;opacity:1;background:#d3d3d3;padding:10px;border-radius:10px}
@@ -44,6 +45,10 @@ textarea:hover,textarea{width:100%;height:100%;font-size:18px;outline:none;box-s
 		<h3>
 			<img src="img/icon.png" alt="icon" height="24">Note 
 		</h3>                    
+		<div>
+			<span id="menos" class="btn">-</span>
+			<span id="mas" class="btn">+</span>
+		</div>
 		<a id="clearNotes" class="btn">Clear</a>	
 	</header>
 

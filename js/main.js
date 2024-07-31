@@ -3,13 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-  
-
-
 var app = {  
   	note: document.getElementById('note'),
   	clearNotes: document.getElementById('clearNotes'),
-  	modalClear: document.getElementById('modalClear'),
+    modalClear: document.getElementById('modalClear'),
+    menosBtn: document.getElementById('menos'),
+  	masBtn: document.getElementById('mas'),
 
     doOnOrientationChange: function() {
       
@@ -52,6 +51,36 @@ var app = {
     		var noteItem = localStorage.getItem("_note");
     		app.note.value = noteItem;
   		}
+
+      app.menosBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation(); 
+
+        var style = window.getComputedStyle(app.note, null).getPropertyValue('font-size');
+        var fontSize = parseFloat(style); 
+
+        if (fontSize > 10) {
+          app.note.style.fontSize = (fontSize - 2) + 'px';
+          app.masBtn.classList.remove('disabled');
+        } else {
+          app.menosBtn.classList.add('disabled');
+        }
+      });
+
+      app.masBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation(); 
+        
+        var style = window.getComputedStyle(app.note, null).getPropertyValue('font-size');
+        var fontSize = parseFloat(style); 
+
+        if (fontSize < 30) {
+          app.note.style.fontSize = (fontSize + 2) + 'px';
+          app.menosBtn.classList.remove('disabled');
+        } else {
+          app.masBtn.classList.add('disabled');
+        }
+      });
 
 	  	app.clearNotes.addEventListener('click', (event) => {
         event.preventDefault();
